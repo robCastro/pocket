@@ -4,7 +4,7 @@ from expenses.api.v1.serializers import CategorySerializer, ExpenseSerializer
 from expenses.models import Category, Expense
 
 class ExpenseViewSet(viewsets.ModelViewSet):
-    queryset = Expense.objects.all().order_by('-date')
+    queryset = Expense.objects.all().select_related('category').order_by('-date')
     serializer_class = ExpenseSerializer
 
 
