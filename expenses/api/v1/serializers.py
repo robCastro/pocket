@@ -18,3 +18,10 @@ class ExpenseSerializer(serializers.ModelSerializer):
         model = models.Expense
         fields = ['id', 'comment', 'amount', 'date', 'category', 'category_id']
 
+
+class CategoryWithExpensesSerializer(serializers.Serializer):
+    id = serializers.IntegerField()
+    name = serializers.CharField()
+    limit = serializers.DecimalField(max_digits=12, decimal_places=2)
+    expended = serializers.DecimalField(max_digits=12, decimal_places=2)
+
